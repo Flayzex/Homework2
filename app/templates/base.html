@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        a, h1 {
+            display: inline-block;
+            margin-right: 25px;
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h1>{{ user.username }}</h1>
+        <a href="{% url 'notes' %}"><h1>Мои заметки</h1></a>
+        <a href="{% url 'add_note' %}"><h1>Добавить заметку</h1></a>
+        <a href="{% url 'logout' %}"><h1>Выйти</h1></a>
+    {% else %}
+        <a href="{% url 'reg' %}"><h1>Регистрация</h1></a>
+        <a href="{% url 'login' %}"><h1>Войти</h1></a>
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+</body>
+</html>
